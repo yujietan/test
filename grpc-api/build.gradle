@@ -1,6 +1,10 @@
 plugins {
     id 'java'
     id 'com.google.protobuf' version '0.9.4'
+    // Embeds META-INF/jandex.idx so any Quarkus app depending on this JAR
+    // gets full type-hierarchy visibility without needing
+    // quarkus.index-dependency in its application.properties.
+    id 'org.kordamp.gradle.jandex' version '2.1.0'
 }
 
 def grpcVersion = '1.62.2'

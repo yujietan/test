@@ -63,6 +63,22 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Embed a Jandex index so any Quarkus app depending on this JAR
+                 gets full type-hierarchy visibility without needing
+                 quarkus.index-dependency in its application.properties. -->
+            <plugin>
+                <groupId>io.smallrye</groupId>
+                <artifactId>jandex-maven-plugin</artifactId>
+                <version>3.1.7</version>
+                <executions>
+                    <execution>
+                        <id>make-index</id>
+                        <goals>
+                            <goal>jandex</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
