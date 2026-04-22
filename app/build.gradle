@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'io.quarkus' version '3.8.1'
+}
+
+dependencies {
+    implementation enforcedPlatform("io.quarkus.platform:quarkus-bom:3.8.1")
+
+    // External module containing proto-generated gRPC stubs.
+    // Classes from this module are NOT auto-registered for reflection
+    // by Quarkus during native compilation — that's the root cause of
+    // the UNIMPLEMENTED / HTTP 404 errors seen in native mode.
+    implementation project(':grpc-api')
+
+    implementation 'io.quarkus:quarkus-grpc'
+    implementation 'io.quarkus:quarkus-arc'
+
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.grpc:grpc-testing:1.62.2'
+}
+
+test {
+    systemProperty "java.util.logging.manager", "org.jboss.logmanager.LogManager"
+}
