@@ -2,11 +2,13 @@ package org.acme;
 
 import io.grpc.stub.StreamObserver;
 import io.quarkus.grpc.GrpcService;
+import jakarta.inject.Singleton;
 import org.acme.grpc.HelloReply;
 import org.acme.grpc.HelloRequest;
 import org.acme.grpc.HelloServiceGrpc;
 
 @GrpcService
+@Singleton
 public class HelloGrpcService extends HelloServiceGrpc.HelloServiceImplBase {
 
     @Override
